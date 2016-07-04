@@ -5,7 +5,10 @@ import android.app.Application;
 import com.facebook.stetho.Stetho;
 import com.squareup.leakcanary.LeakCanary;
 
+import javax.inject.Singleton;
+
 import autodagger.AutoComponent;
+import autodagger.AutoInjector;
 import silin.androidbase.modules.ContextModule;
 import silin.androidbase.modules.EnvironmentModule;
 import silin.androidbase.modules.NetworkModule;
@@ -22,12 +25,47 @@ import silin.androidbase.modules.SharedPrefModule;
                 SharedPrefModule.class
         }
 )
+@Singleton
+@AutoInjector(BaseApplication.class)
 public class BaseApplication extends Application {
+
+    // Shared BaseApplication for Mock testing that needs Application instances
+    protected static BaseApplication sBaseApplication;
+    // Component for mocking any dependencies in testing
+    protected BaseApplicationComponent mBaseApplicationComponent;
+
+    public static BaseApplication sharedApplication() {
+        return sBaseApplication;
+    }
+
     @Override
     public void onCreate() {
         super.onCreate();
 
         Stetho.initializeWithDefaults(this);
         LeakCanary.install(this);
+
+        sBaseApplication = this;
+
+        buildComponents();
+    }
+
+    @Override
+    public void onTerminate() {
+        super.onTerminate();
+        sBaseApplication = null;
+    }
+
+    public BaseApplicationComponent getComponentApplication() {
+        return mBaseApplicationComponent;
+    }
+
+    protected void buildComponents() {
+        mBaseApplicationComponent = DaggerBaseApplicationComponent.builder()
+                .contextModule(new ContextModule(getApplicationContext()))
+                .environmentModule(new EnvironmentModule())
+                .sharedPrefModule(new SharedPrefModule())
+                //.networkModule(new NetworkModule(BuildConfig.API_BASE_URL))
+                .build();
     }
 }
