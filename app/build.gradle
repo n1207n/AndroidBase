@@ -73,9 +73,13 @@ dependencies {
     compile 'com.squareup.moshi:moshi:1.2.0'
     compile 'com.jakewharton:butterknife:8.1.0'
     apt 'com.jakewharton:butterknife-compiler:8.1.0'
+
     apt 'com.google.dagger:dagger-compiler:2.2'
     compile 'com.google.dagger:dagger:2.2'
     provided 'javax.annotation:jsr250-api:1.0'
+
+    apt 'com.github.lukaspili.autodagger2:autodagger2-compiler:1.1'
+    compile 'com.github.lukaspili.autodagger2:autodagger2:1.1'
 
     compile 'io.reactivex:rxjava:1.1.6'
     compile 'io.reactivex:rxandroid:1.2.1'
