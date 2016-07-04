@@ -34,7 +34,6 @@ android {
 dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
 
-    // Testing dependencies
     androidTestCompile 'com.android.support:support-annotations:24.0.0'
     androidTestCompile 'com.android.support.test:runner:0.5'
     androidTestCompile 'com.android.support.test:rules:0.5'
@@ -45,56 +44,44 @@ dependencies {
     androidTestCompile 'org.mockito:mockito-core:1.10.19'
     testCompile 'junit:junit:4.12'
 
-    // Android support libraries
-    compile 'com.android.support:appcompat-v7:24.0.0'
-    compile 'com.android.support:cardview-v7:24.0.0'
     compile 'com.android.support:design:24.0.0'
-    compile 'com.android.support:palette-v7:24.0.0'
-    compile 'com.android.support:recyclerview-v7:24.0.0'
     compile 'com.android.support:support-annotations:24.0.0'
     compile 'com.android.support:support-vector-drawable:24.0.0'
+    compile 'com.android.support:percent:24.0.0'
 
-    // Auto-Value
     provided 'com.google.auto.value:auto-value:1.2'
     apt 'com.google.auto.value:auto-value:1.2'
     apt 'com.ryanharter.auto.value:auto-value-parcel:0.2.3-rc2'
     compile 'com.ryanharter.auto.value:auto-value-parcel-adapter:0.2.3-rc2'
 
-    // Square libraries
-    compile 'com.squareup.okhttp:okhttp:2.0.0'
-    compile 'com.squareup.picasso:picasso:2.3.2'
+    compile 'com.squareup.okhttp3:okhttp:3.3.1'
+    compile 'com.squareup.okio:okio:1.9.0'
+    compile 'com.squareup.picasso:picasso:2.5.2'
     compile 'com.squareup.retrofit2:retrofit:2.1.0'
     compile 'com.squareup.retrofit2:converter-moshi:2.1.0'
     compile 'com.squareup.moshi:moshi:1.2.0'
-    compile 'com.squareup:otto:1.3.5'
-    compile 'com.jakewharton:butterknife:5.1.1'
+    compile 'com.jakewharton:butterknife:8.1.0'
+    apt 'com.jakewharton:butterknife-compiler:8.1.0'
     apt 'com.google.dagger:dagger-compiler:2.2'
     compile 'com.google.dagger:dagger:2.2'
     provided 'javax.annotation:jsr250-api:1.0'
 
-    // Job Queue
     compile 'com.birbit:android-priority-jobqueue:1.3.5'
 
-    // Font
     compile 'uk.co.chrisjenx:calligraphy:2.2.0'
 
-    // Animation framework
     compile 'com.facebook.rebound:rebound:0.3.8'
 
-    // Utilities
     compile 'com.novoda:merlin:0.8.0'
     compile 'joda-time:joda-time:2.3'
 
-    // Tour guide utilities
     compile 'me.relex:circleindicator:1.2.1@aar'
 
-    // Database
     apt "com.github.Raizlabs.DBFlow:dbflow-processor:${dbflow_version}"
     compile "com.github.Raizlabs.DBFlow:dbflow-core:${dbflow_version}"
     compile "com.github.Raizlabs.DBFlow:dbflow:${dbflow_version}"
     compile "com.github.Raizlabs.DBFlow:dbflow-sqlcipher:${dbflow_version}"
 
-    // Debuging utilities
     debugCompile 'com.facebook.stetho:stetho:1.3.1'
     debugCompile 'com.facebook.stetho:stetho-okhttp3:1.3.1'
     debugCompile 'com.jakewharton.scalpel:scalpel:1.1.2'
@@ -109,7 +96,6 @@ dependencies {
     compile 'io.palaima.debugdrawer:debugdrawer-scalpel:0.7.0'
     compile 'io.palaima.debugdrawer:debugdrawer-location:0.7.0'
 
-    // Memory leak detector
     debugCompile 'com.squareup.leakcanary:leakcanary-android:1.4-beta2'
     releaseCompile 'com.squareup.leakcanary:leakcanary-android-no-op:1.4-beta2'
     testCompile 'com.squareup.leakcanary:leakcanary-android-no-op:1.4-beta2'
