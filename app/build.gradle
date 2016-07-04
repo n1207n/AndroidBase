@@ -1,8 +1,16 @@
 apply plugin: 'com.android.application'
 apply plugin: 'com.neenbedankt.android-apt'
 
+def APP_ID = 'silin.androidbase'
+
 // DBFlow versioning
-def dbflow_version = "3.0.1"
+def DBFLOW_VERSION = "3.0.1"
+
+// HTTP logging level by build
+def ENVIRONMENT_CONSTANT_TYPE = APP_ID + ".IEnvironment"
+def ENVIRONMENT_CONSTANT_NAME = "Environment"
+def ENVIRONMENT_CONSTANT_VALUE_DEV = APP_ID + "." + ENVIRONMENT_CONSTANT_NAME + ".DEV"
+def ENVIRONMENT_CONSTANT_VALUE_PROD = APP_ID + "." + ENVIRONMENT_CONSTANT_NAME + ".PROD"
 
 android {
     compileSdkVersion 24
@@ -11,7 +19,7 @@ android {
         enabled = true
     }
     defaultConfig {
-        applicationId "silin.androidbase"
+        applicationId APP_ID
         minSdkVersion 18
         targetSdkVersion 24
         versionCode 1
@@ -22,11 +30,13 @@ android {
         debug {
             applicationIdSuffix '.debug'
             versionNameSuffix '-DEBUG'
+            buildConfigField ENVIRONMENT_CONSTANT_TYPE, ENVIRONMENT_CONSTANT_NAME, ENVIRONMENT_CONSTANT_VALUE_DEV
         }
 
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            buildConfigField ENVIRONMENT_CONSTANT_TYPE, ENVIRONMENT_CONSTANT_NAME, ENVIRONMENT_CONSTANT_VALUE_PROD
         }
     }
 }
@@ -55,6 +65,7 @@ dependencies {
     compile 'com.ryanharter.auto.value:auto-value-parcel-adapter:0.2.3-rc2'
 
     compile 'com.squareup.okhttp3:okhttp:3.3.1'
+    compile group: 'com.squareup.okhttp3', name: 'logging-interceptor', version: '3.3.1'
     compile 'com.squareup.okio:okio:1.9.0'
     compile 'com.squareup.picasso:picasso:2.5.2'
     compile 'com.squareup.retrofit2:retrofit:2.1.0'
@@ -83,10 +94,10 @@ dependencies {
 
     compile 'me.relex:circleindicator:1.2.1@aar'
 
-    apt "com.github.Raizlabs.DBFlow:dbflow-processor:${dbflow_version}"
-    compile "com.github.Raizlabs.DBFlow:dbflow-core:${dbflow_version}"
-    compile "com.github.Raizlabs.DBFlow:dbflow:${dbflow_version}"
-    compile "com.github.Raizlabs.DBFlow:dbflow-sqlcipher:${dbflow_version}"
+    apt "com.github.Raizlabs.DBFlow:dbflow-processor:${DBFLOW_VERSION}"
+    compile "com.github.Raizlabs.DBFlow:dbflow-core:${DBFLOW_VERSION}"
+    compile "com.github.Raizlabs.DBFlow:dbflow:${DBFLOW_VERSION}"
+    compile "com.github.Raizlabs.DBFlow:dbflow-sqlcipher:${DBFLOW_VERSION}"
 
     debugCompile 'com.facebook.stetho:stetho:1.3.1'
     debugCompile 'com.facebook.stetho:stetho-okhttp3:1.3.1'
