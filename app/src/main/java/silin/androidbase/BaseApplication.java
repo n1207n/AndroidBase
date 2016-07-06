@@ -30,9 +30,9 @@ import silin.androidbase.modules.SharedPrefModule;
 public class BaseApplication extends Application {
 
     // Shared BaseApplication for Mock testing that needs Application instances
-    protected static BaseApplication sBaseApplication;
+    private static BaseApplication sBaseApplication;
     // Component for mocking any dependencies in testing
-    protected BaseApplicationComponent mBaseApplicationComponent;
+    private BaseApplicationComponent mBaseApplicationComponent;
 
     public static BaseApplication sharedApplication() {
         return sBaseApplication;
@@ -56,16 +56,12 @@ public class BaseApplication extends Application {
         sBaseApplication = null;
     }
 
-    public BaseApplicationComponent getComponentApplication() {
+    BaseApplicationComponent getComponentApplication() {
         return mBaseApplicationComponent;
     }
 
-    protected void buildComponents() {
+    private void buildComponents() {
         mBaseApplicationComponent = DaggerBaseApplicationComponent.builder()
-                .contextModule(new ContextModule(getApplicationContext()))
-                .environmentModule(new EnvironmentModule())
-                .sharedPrefModule(new SharedPrefModule())
-                //.networkModule(new NetworkModule(BuildConfig.API_BASE_URL))
                 .build();
     }
 }
