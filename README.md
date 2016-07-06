@@ -6,12 +6,16 @@ https://github.com/RoRoche/AndroidStarter
 
 https://medium.com/@cesarmcferreira/gradle-tips-tricks-to-survive-the-zombie-apocalypse-3dd996604341#.psceqbtzk
 
+https://plus.google.com/+AndroidDevelopers/posts/Z1Wwainpjhd?linkId=17769888 (For Brand launch screen)
+
+
 ## What's in here?
 This project includes the following:
 * Useful Gradle dependencies
 * Pre-made Dagger 2 Auto components
 * Application class bootstrapped
 * Gradle build script goodies from versioning variables to testLogging
+* MainActivity with Fragment as first activity
 
 This project does not include:
 * Database setup
@@ -21,12 +25,16 @@ This project does not include:
 * No keystore
 
 ### So this is just pre-Gradled project?
-Pretty much! The reason for not pre-configuring dependencies and creating Base Java classes is purely flexibility. Some apps don't need to use Database at all and/or REST APIs. From this skeleton, you can freely start bootstrapping database models or Retrofit services.
+Pretty much! The reason for not pre-configuring dependencies and creating Base Java classes is purely flexibility. 
+Some apps don't need to use Database at all and/or REST APIs. From this skeleton, you can freely start bootstrapping Java POJOs or Database models or Retrofit services.
+
 I also didn't want to set up eventbus or RxJava out of the box. Again, this is for flexibility. Some people prefer Eventbus over the RxJava/RxAndroid; vice versa. Even for Eventbus, people have different opinions on how Event structure or dispatching should be. You can build Roroche's Eventbus + Priority job queue pattern or full RxJava/RxAndroid pattern from here. 
 
 We are also living in the world where people constantly debate on MVP vs Clean vs SOLID vs MVVM vs RxAndroid-bindings. Mosby is included as the Gradle but there is no base setup or anything else. So, choose what you prefer for UI architecture. ;)
 
 In order to make the base project very lean, this project is purely codebase. There is no Gradle keystore configuration or building tasks.
+
+Overall, this project gives you a great starting point to polish the Gradle dependencies as you fit and set up your building blocks for the architecture choices.
 
 ### Secret info!
 Any secret keys or information should go to gradle.properties file. In the project's build.gradle file, some buildConfigField entries are commented out for RSET API helper information later on.
@@ -39,7 +47,6 @@ If you are using GCM, Firebase, Fabric, or any cloud services, make sure those s
   * Versioning
   * SDK & Build tool versioning
 * Git SHA hash & Build timestamp as BuildConfigField
-* DBFLOW version
 * Runtime Environment BuildConfigField (DEV or PROD)
 * Data binding enabled
 * Product flavors for different target minSdkVersion
@@ -50,6 +57,8 @@ If you are using GCM, Firebase, Fabric, or any cloud services, make sure those s
 * Unit test result as Gradle output
 
 ### Gradle dependencies
+
+* apt 'com.squareup:javapoet:1.7.0' is included as first apt statement to resolve version conflicts in square dependencies
 
 1. Testing
   * 'com.android.support:support-annotations'
@@ -66,6 +75,7 @@ If you are using GCM, Firebase, Fabric, or any cloud services, make sure those s
   * 'com.android.support:support-annotations'
   * 'com.android.support:support-vector-drawable'
   * 'com.android.support:percent'
+  * 'com.android.support.constraint:constraint-layout'
 
 3. Auto Value
   * 'com.google.auto.value:auto-value'
@@ -83,6 +93,7 @@ If you are using GCM, Firebase, Fabric, or any cloud services, make sure those s
 5. Dagger 2
   * 'com.google.dagger:dagger'
   * 'javax.annotation:jsr250-api'
+  * 'org.glassfish:javax.annotation'
   * 'com.github.lukaspili.autodagger2:autodagger2'
 
 6. A bunch of APTs!
