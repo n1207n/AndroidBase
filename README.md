@@ -49,6 +49,9 @@ If you are using GCM, Firebase, Fabric, or any cloud services, make sure those s
 * Git SHA hash & Build timestamp as BuildConfigField
 * Runtime Environment BuildConfigField (DEV or PROD)
 * Data binding enabled
+* VectorDrawable support from Support library
+* Color style XML set
+* Brand splash screen support
 * Product flavors for different target minSdkVersion
 * Suffixes for debug build
 * Gradle-driven app_name
