@@ -36,6 +36,7 @@ android {
     defaultConfig {
         applicationId APP_ID
         targetSdkVersion LATEST_SDK_VER
+        vectorDrawables.useSupportLibrary = true
         versionCode versionMajor * 1000 + versionMinor * 100 + versionPatch
         versionName "${versionMajor}.${versionMinor}.${versionPatch}"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
