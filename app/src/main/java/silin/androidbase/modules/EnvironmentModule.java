@@ -15,6 +15,6 @@ public class EnvironmentModule {
     @Provides
     @Singleton
     public IEnvironment providesEnvironment() {
-        return BuildConfig.Environment;
+        return BuildConfig.ENVIRONMENT;
     }
 }

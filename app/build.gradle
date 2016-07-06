@@ -23,7 +23,7 @@ def buildTime = new Date().format("yyyy-MM-dd'T'HH:mm:ss'Z'", TimeZone.getTimeZo
 
 // HTTP logging level by build
 def ENVIRONMENT_CONSTANT_TYPE = APP_ID + ".IEnvironment"
-def ENVIRONMENT_CONSTANT_NAME = "Environment"
+def ENVIRONMENT_CONSTANT_NAME = "ENVIRONMENT"
 def ENVIRONMENT_CONSTANT_VALUE_DEV = APP_ID + "." + ENVIRONMENT_CONSTANT_NAME + ".DEV"
 def ENVIRONMENT_CONSTANT_VALUE_PROD = APP_ID + "." + ENVIRONMENT_CONSTANT_NAME + ".PROD"
 
