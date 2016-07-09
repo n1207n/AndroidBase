@@ -90,6 +90,7 @@ If you are using GCM, Firebase, Fabric, or any cloud services, make sure those s
   * 'com.squareup.picasso:picasso'
   * 'com.squareup.retrofit2:retrofit'
   * 'com.squareup.retrofit2:converter-moshi'
+  * 'com.squareup.retrofit:adapter-rxjava'
   * 'com.squareup.moshi:moshi'
   * 'com.jakewharton:butterknife'
 
@@ -107,6 +108,8 @@ If you are using GCM, Firebase, Fabric, or any cloud services, make sure those s
 7. RxJava/RxAndroid
   * 'io.reactivex:rxjava'
   * 'io.reactivex:rxandroid'
+  * 'com.trello:rxlifecycle'
+  * 'com.trello:rxlifecycle-components'
 
 8. Mosby
   * 'com.hannesdorfmann.mosby:mvp'
