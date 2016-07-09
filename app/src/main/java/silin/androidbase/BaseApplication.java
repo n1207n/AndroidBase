@@ -9,7 +9,7 @@ import javax.inject.Singleton;
 
 import autodagger.AutoComponent;
 import autodagger.AutoInjector;
-import silin.androidbase.modules.ContextModule;
+import silin.androidbase.modules.AndroidModule;
 import silin.androidbase.modules.EnvironmentModule;
 import silin.androidbase.modules.NetworkModule;
 import silin.androidbase.modules.SharedPrefModule;
@@ -19,7 +19,7 @@ import silin.androidbase.modules.SharedPrefModule;
  */
 @AutoComponent(
         modules = {
-                ContextModule.class,
+                AndroidModule.class,
                 EnvironmentModule.class,
                 NetworkModule.class,
                 SharedPrefModule.class
@@ -62,6 +62,7 @@ public class BaseApplication extends Application {
 
     private void buildComponents() {
         mBaseApplicationComponent = DaggerBaseApplicationComponent.builder()
+                .androidModule(new AndroidModule(sBaseApplication))
                 .build();
     }
 }
