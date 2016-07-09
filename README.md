@@ -84,13 +84,14 @@ If you are using GCM, Firebase, Fabric, or any cloud services, make sure those s
   * 'com.google.auto.value:auto-value'
   * 'com.ryanharter.auto.value:auto-value-parcel'
   * 'com.ryanharter.auto.value:auto-value-parcel-adapter'
+  * 'com.ryanharter.auto.value:auto-value-moshi'
 
 4. Square libraries
   * 'com.squareup.okhttp3:okhttp' with logging-interceptor
   * 'com.squareup.picasso:picasso'
   * 'com.squareup.retrofit2:retrofit'
   * 'com.squareup.retrofit2:converter-moshi'
-  * 'com.squareup.retrofit:adapter-rxjava'
+  * 'com.squareup.retrofit2:adapter-rxjava'
   * 'com.squareup.moshi:moshi'
   * 'com.jakewharton:butterknife'
 
