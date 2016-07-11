@@ -58,6 +58,7 @@ public class NetworkModule {
                         Request requestWithCache = originalRequest.newBuilder()
                                 .header("Content-Type", "application/json")
                                 .header("Cache-Control", "max-age=21600")
+                                // Add your HTTP Authorization header if needed with BuildConfig.BASE_API_KEY
                                 .build();
 
                         Response response = chain.proceed(requestWithCache);
