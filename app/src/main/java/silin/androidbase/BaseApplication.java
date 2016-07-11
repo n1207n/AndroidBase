@@ -56,7 +56,7 @@ public class BaseApplication extends Application {
         sBaseApplication = null;
     }
 
-    BaseApplicationComponent getComponentApplication() {
+    public BaseApplicationComponent getComponentApplication() {
         return mBaseApplicationComponent;
     }
 

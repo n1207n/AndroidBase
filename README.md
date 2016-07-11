@@ -8,27 +8,29 @@ https://medium.com/@cesarmcferreira/gradle-tips-tricks-to-survive-the-zombie-apo
 
 https://plus.google.com/+AndroidDevelopers/posts/Z1Wwainpjhd?linkId=17769888 (For Brand launch screen)
 
+https://medium.com/@nurrohman/a-simple-android-apps-with-mvp-dagger-rxjava-and-retrofit-4edb214a66d7#.nx8kij39r (For Retrofit 2 RxJava setup)
+
 
 ## What's in here?
 This project includes the following:
 * Useful Gradle dependencies
-* Pre-made Dagger 2 Auto components
+* Pre-made Dagger 2 Auto components (Autoinject annotation ready!)
 * Application class bootstrapped
+* Sample Retrofit 2 interface and instance class with Moshi, AutoValue, and Observable
 * Gradle build script goodies from versioning variables to testLogging
 * MainActivity with Fragment as first activity
 
 This project does not include:
 * Database setup
-* Pre-made Retrofit services
-* No eventbus or RxJava setup
-* No base activity or fragment
-* No keystore
+* Pre-setup for RxJava
+* Base activity or fragment
+* Keystore configuration
 
-### So this is just pre-Gradled project?
+### So this is just pre-Gradled-ish project?
 Pretty much! The reason for not pre-configuring dependencies and creating Base Java classes is purely flexibility. 
 Some apps don't need to use Database at all and/or REST APIs. From this skeleton, you can freely start bootstrapping Java POJOs or Database models or Retrofit services.
 
-I also didn't want to set up eventbus or RxJava out of the box. Again, this is for flexibility. Some people prefer Eventbus over the RxJava/RxAndroid; vice versa. Even for Eventbus, people have different opinions on how Event structure or dispatching should be. You can build Roroche's Eventbus + Priority job queue pattern or full RxJava/RxAndroid pattern from here. 
+I also didn't want to set up eventbus or RxJava out of the box except RxJava sample code for using Retrofit 2, as the smooth network handling is painful to do so. Again, this is for flexibility. Some people prefer Eventbus over the RxJava/RxAndroid; vice versa. Even for Eventbus, people have different opinions on how Event structure or dispatching should be. You can build Roroche's Eventbus + Priority job queue pattern or full RxJava/RxAndroid pattern from here. 
 
 We are also living in the world where people constantly debate on MVP vs Clean vs SOLID vs MVVM vs RxAndroid-bindings. Mosby is included as the Gradle but there is no base setup or anything else. So, choose what you prefer for UI architecture. ;)
 
@@ -79,6 +81,10 @@ If you are using GCM, Firebase, Fabric, or any cloud services, make sure those s
   * 'com.android.support:support-vector-drawable'
   * 'com.android.support:percent'
   * 'com.android.support.constraint:constraint-layout'
+  * 'com.android.support:cardview-v7'
+  * 'com.android.support:gridlayout-v7'
+  * 'com.android.support:appcompat-v7'
+  * 'com.android.support:recyclerview-v7'
 
 3. Auto Value
   * 'com.google.auto.value:auto-value'

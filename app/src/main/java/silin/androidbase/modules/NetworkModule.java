@@ -10,19 +10,26 @@ import com.novoda.merlin.MerlinsBeard;
 import com.squareup.moshi.Moshi;
 import com.squareup.picasso.Picasso;
 
+import java.io.IOException;
+
 import javax.inject.Singleton;
 
 import dagger.Module;
 import dagger.Provides;
 import okhttp3.Cache;
+import okhttp3.Interceptor;
 import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.Response;
 import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Retrofit;
+import retrofit2.adapter.rxjava.RxJavaCallAdapterFactory;
 import retrofit2.converter.moshi.MoshiConverterFactory;
+import rx.schedulers.Schedulers;
 import silin.androidbase.IEnvironment;
 
 /**
- * Created on 7/4/16: theMovieDB_2_0
+ * Created on 7/11/16: AndroidBase
  */
 @Module
 public class NetworkModule {
@@ -43,6 +50,22 @@ public class NetworkModule {
         return new OkHttpClient.Builder()
                 .addInterceptor(interceptor)
                 .addNetworkInterceptor(new StethoInterceptor())
+                .addInterceptor(new Interceptor() {
+                    @Override
+                    public Response intercept(Chain chain) throws IOException {
+                        Request originalRequest = chain.request();
+
+                        Request requestWithCache = originalRequest.newBuilder()
+                                .header("Content-Type", "application/json")
+                                .header("Cache-Control", "max-age=21600")
+                                .build();
+
+                        Response response = chain.proceed(requestWithCache);
+                        response.cacheResponse();
+
+                        return response;
+                    }
+                })
                 .cache(cache).build();
     }
 
@@ -84,9 +107,24 @@ public class NetworkModule {
     @Singleton
     Retrofit providesRetrofit(@NonNull final Moshi moshi, @NonNull final OkHttpClient okHttpClient) {
         return new Retrofit.Builder()
+                // Replace with BuildConfig.API_BASE_URL
                 .baseUrl("")
                 .addConverterFactory(MoshiConverterFactory.create(moshi))
+                .addCallAdapterFactory(RxJavaCallAdapterFactory.createWithScheduler(Schedulers.io()))
                 .client(okHttpClient)
                 .build();
     }
+
+    // Use below for Retrofit 2
+    // @Provides
+    // @Singleton
+    // NetworkService providesNetworkInterface(@NonNull final Retrofit retrofit) {
+    //     return retrofit.create(NetworkService.class);
+    // }
+
+    // @Provides
+    // @Singleton
+    // APIService providesAPIService(@NonNull final NetworkService networkService) {
+    //     return new APIService(networkService);
+    // }
 }
