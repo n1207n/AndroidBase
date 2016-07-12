@@ -121,24 +121,28 @@ If you are using GCM, Firebase, Fabric, or any cloud services, make sure those s
 8. Mosby
   * 'com.hannesdorfmann.mosby:mvp'
   * 'com.hannesdorfmann.mosby:viewstate'
+  
+9. Fragment Args
+  * 'com.hannesdorfmann.fragmentargs:annotation:3.0.2'
+  * 'com.hannesdorfmann.fragmentargs:processor:3.0.2'
 
-9. Some UI goodies
+10. Some UI goodies
   * 'io.nlopez.smartadapters:library'
   * 'me.relex:circleindicator'
 
-10. Utilities
+11. Utilities
   * 'com.birbit:android-priority-jobqueue'
   * 'uk.co.chrisjenx:calligraphy'
   * 'com.novoda:merlin'
   * 'joda-time:joda-time'
 
-11. Animation
+12. Animation
   * 'com.facebook.rebound:rebound'
 
-12. Database
+13. Database
   * "com.github.Raizlabs.DBFlow:dbflow"
 
-13. Debugging
+14. Debugging
   * 'com.facebook.stetho:stetho'
   * 'com.jakewharton.scalpel:scalpel'
   * 'io.palaima.debugdrawer:debugdrawer'
